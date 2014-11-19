@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+
+
+    <script>
+        // Put event listeners into place
+        window.addEventListener("DOMContentLoaded", function () {
+            // Grab elements, create settings, etc.
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext("2d"),
+                video = document.getElementById("video"),
+                videoObj = {
+                    "video": true
+                },
+                errBack = function (error) {
+                    console.log("Video capture error: ", error.code);
+                };
+
+            // Put video listeners into place
+            if (navigator.getUserMedia) { // Standard
+                navigator.getUserMedia(videoObj, function (stream) {
+                    video.src = stream;
+                    video.play();
+                }, errBack);
+            } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed
+                navigator.webkitGetUserMedia(videoObj, function (stream) {
+                    video.src = window.webkitURL.createObjectURL(stream);
+                    video.play();
+                }, errBack);
+            } else if (navigator.mozGetUserMedia) { // Firefox-prefixed
+                navigator.mozGetUserMedia(videoObj, function (stream) {
+                    video.src = window.URL.createObjectURL(stream);
+                    video.play();
+                }, errBack);
+            }
+        }, false);
+    </script>
+        
+</head>
+
+<body>
+
+    <section>
+        <div class="main-box">
+            <div class="right-box">
+                <div class="head">
+                    <p>Review<span class="pull-right">Capture your review</span>
+                    </p>
+                </div>
+                <div class="image-box">
+<img src="images/animation2.jpg" height="310" width="100%">
+
+                </div>
+                <div class="buttons">
+                   <a href="#"><button type="button" class="btn-default">Edit</button></a> 
+
+                     <span class="position"><a href="#"><img src="images/camera.png"s></span></a>
+
+                    <a href="#"> <button type="button" class="btn-defaultp">Preview</button></a>
+                </div>
+                <div class="slider scroll">
+                    <div class="img-content ">
+                        <img src="images/dp.jpg">
+                        <img src="images/dp.jpg">
+                        <img src="images/dp.jpg">
+                        <img src="images/dp.jpg">
+                        <img src="images/dp.jpg">
+                        <img src="images/dp.jpg">
+                        <img src="images/dp.jpg">
+                        <!--            <i class="fa fa-th"></i>-->
+                    </div>
+                </div>
+            </div>
+            <div class="left-box pull-right">
+                <div class="left-back">
+                    <div class="left-head">
+                        
+                        <a href="#"> <i class="fa fa-times"></i></a>
+
+                        <a href="#"> <i class="fa fa-square-o"></i></a>
+                        <a href="#"><i class="fa fa-minus"></i></a>
+                        <a href="#"> <i class="fa fa-cog"></i>
+
+                    </div>
+                    <div class="drop-down">
+                       
+                        <select name="Icecream Flavours">
+                            <option value="double chocolate">SELECT CATEGORY</option>
+                            <option value="vanilla">Vanilla</option>
+                            <option value="strawberry">Strawberry</option>
+                            <option value="caramel">Caramel</option>
+                        </select>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-text">
+                            <h5>information</h5>
+                            <input class="textbox"type="text" value="title/product"> 
+                            <input class="textbox"type="text" value="location"> 
+                            <p>Powered by Foursquar</p>
+                            <input class="textbox"type="text" value="tags">
+                            <h5>ratings</h5>
+                            <input type="range" min="0" max="5" value="2.5" step="0.1" onchange="rangevalue.value=value" />
+<output id="rangevalue"></output>
+                       <div class="bottom">
+                           <i class="fa fa-twitter"></i><br>
+                           <i class="fa fa-facebook"></i>
+                           
+                     <i class="fa fa-google-plus"></i>
+                           <a href="#"><button class="publish-button">PUBLISH</button></a>
+                       </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+</html>
